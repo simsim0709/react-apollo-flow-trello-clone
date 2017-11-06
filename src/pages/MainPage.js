@@ -1,39 +1,47 @@
 import React from 'react';
 
+import { gql, graphql } from 'react-apollo';
+
 import Page from 'components/Page';
 import Container from 'components/Container';
 import Item from 'components/Item';
 
 import BoardItem from 'components/BoardItem';
+import BoardDialogButton from 'components/BoardDialogButton';
 
-const MainPage = () => {
+const MainPage = ({ boardsData }) => {
   return (
     <Page>
       <Container>
+        {boardsData &&
+          boardsData.map(({ id, name, description }) => (
+            <Item key={id}>
+              <BoardItem name={name} description={description} />
+            </Item>
+          ))}
+
         <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
-        </Item>
-        <Item>
-          <BoardItem />
+          <BoardDialogButton />
         </Item>
       </Container>
     </Page>
   );
 };
 
-export default MainPage;
+const ALL_BOARDS_QUERY = gql`
+  query AllBoardsQuery {
+    allBoards {
+      id
+      name
+      description
+    }
+  }
+`;
+
+export default graphql(ALL_BOARDS_QUERY, {
+  props: ({ ownProps, data }) => {
+    return {
+      boardsData: data.allBoards,
+    };
+  },
+})(MainPage);
