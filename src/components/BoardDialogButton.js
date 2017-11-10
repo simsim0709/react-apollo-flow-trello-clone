@@ -16,7 +16,8 @@ import Typography from 'material-ui/Typography';
 
 import PlayArrowIcon from 'material-ui-icons/PlayArrow';
 
-import { compose, gql, graphql } from 'react-apollo';
+import { compose, graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 const styles = theme => ({
   card: {
@@ -31,7 +32,7 @@ const styles = theme => ({
   },
 });
 
-class BoardCreateButton extends React.Component {
+class BoardDialogButton extends React.Component {
   state = {
     open: false,
     name: '',
@@ -88,7 +89,6 @@ class BoardCreateButton extends React.Component {
             fullWidth
             margin="dense"
             label="New Board Name ..."
-            boardcreatebutton
             type="text"
             name="name"
             value={this.state.name}
@@ -126,5 +126,5 @@ const CREATE_BOARD_MUTATION = gql`
 `;
 
 export default compose(withStyles(styles), graphql(CREATE_BOARD_MUTATION))(
-  BoardCreateButton
+  BoardDialogButton
 );

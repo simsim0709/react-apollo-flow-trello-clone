@@ -1,9 +1,8 @@
-import { ApolloClient, createNetworkInterface } from 'react-apollo';
+import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-client-preset';
 
-const networkInterface = createNetworkInterface({
-  uri: process.env.REACT_APP_GRAPHCOOL_SIMPLE_API,
+const client = new ApolloClient({
+  link: new HttpLink({ uri: process.env.REACT_APP_GRAPHCOOL_SIMPLE_API }),
+  cache: new InMemoryCache(),
 });
-
-const client = new ApolloClient({ networkInterface });
 
 export default client;

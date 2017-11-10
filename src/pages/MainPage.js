@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import Page from 'components/Page';
 import Container from 'components/Container';
