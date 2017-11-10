@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const styles = theme => ({
   card: {
     minWidth: 160,
+    height: 100,
   },
   body1: {
     marginBottom: 12,
@@ -18,18 +19,16 @@ const styles = theme => ({
   },
 });
 
-const BoardItem = props => {
-  const { classes } = props;
-
+const BoardItem = ({ classes, name, description }) => {
   return (
     <Card className={classes.card}>
       <Link to="/board/1">
         <CardContent>
           <Typography type="headline" component="h2">
-            Board
+            {name}
           </Typography>
           <Typography type="body1" className={classes.body1}>
-            managed by you
+            {description}
           </Typography>
         </CardContent>
       </Link>
