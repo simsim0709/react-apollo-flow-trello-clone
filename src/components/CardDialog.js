@@ -25,13 +25,16 @@ class CardDialog extends React.Component {
     this.props.onClose();
   };
 
+  renderTransition() {
+    return <Slide direction="down" />;
+  }
+
   render() {
     return (
       <Dialog
         fullWidth
         maxWidth="md"
         open={this.props.open}
-        transition={<Slide direction="down" />}
         keepMounted
         onRequestClose={this.handleRequestClose}
       >
