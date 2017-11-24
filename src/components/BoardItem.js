@@ -2,11 +2,16 @@
 
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 
 import { Link } from 'react-router-dom';
+
+type Props = {
+  classes: Object,
+  name: string,
+  description?: string,
+};
 
 const styles = theme => ({
   card: {
@@ -19,7 +24,7 @@ const styles = theme => ({
   },
 });
 
-const BoardItem = ({ classes, name, description }) => {
+const BoardItem = ({ classes, name, description }: Props) => {
   return (
     <Card className={classes.card}>
       <Link to="/board/1">
