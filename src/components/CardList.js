@@ -7,9 +7,6 @@ import Card, { CardContent, CardActions } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 
-import Container from './Container';
-import Item from './Item';
-
 import CardListItem from './CardListItem';
 
 const styles = theme => {
@@ -20,11 +17,13 @@ const styles = theme => {
   };
 };
 
-const CardList = ({ classes }) => {
+const CardList = ({ classes, listData }) => {
+  const { id, name } = listData;
+  console.log('listData', listData);
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography>List Title</Typography>
+        <Typography>{name}</Typography>
       </CardContent>
       <CardContent>
         <CardListItem />

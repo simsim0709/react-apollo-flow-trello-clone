@@ -19,10 +19,10 @@ const styles = theme => ({
   },
 });
 
-const BoardItem = ({ classes, name, description }) => {
+const BoardItem = ({ classes, boardId, name, description }) => {
   return (
     <Card className={classes.card}>
-      <Link to="/board/1">
+      <Link to={`/board/${boardId}`}>
         <CardContent>
           <Typography type="headline" component="h2">
             {name}

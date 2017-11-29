@@ -17,7 +17,7 @@ const MainPage = ({ boardsData }) => {
         {boardsData &&
           boardsData.map(({ id, name, description }) => (
             <Item key={id}>
-              <BoardItem name={name} description={description} />
+              <BoardItem boardId={id} name={name} description={description} />
             </Item>
           ))}
 
