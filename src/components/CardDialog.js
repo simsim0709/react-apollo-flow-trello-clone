@@ -25,6 +25,10 @@ class CardDialog extends React.Component {
     this.props.onClose();
   };
 
+  renderTransition() {
+    return <Slide direction="down" />;
+  }
+
   render() {
     return (
       <Dialog

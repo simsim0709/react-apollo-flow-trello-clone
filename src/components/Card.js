@@ -3,11 +3,18 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import MUICard, { CardActions, CardContent } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 
 import CardDialog from './CardDialog';
+
+type Props = {
+  classes: Object,
+};
+
+type State = {
+  open: boolean,
+};
 
 const styles = theme => ({
   card: {
@@ -26,7 +33,7 @@ const styles = theme => ({
   },
 });
 
-class Card extends React.Component {
+class Card extends React.Component<Props, State> {
   state = {
     open: false,
   };

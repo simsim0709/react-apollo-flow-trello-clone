@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 
 import { withStyles } from 'material-ui/styles';
@@ -13,8 +11,6 @@ import Dialog, {
 } from 'material-ui/Dialog';
 import Card, { CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
-
-import PlayArrowIcon from 'material-ui-icons/PlayArrow';
 
 import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -51,7 +47,7 @@ class BoardCreateButton extends React.Component {
 
   handleSubmit = async () => {
     try {
-      const result = await this.props.mutate({
+      const result = await this.props.createBoard({
         variables: {
           name: this.state.name,
           description: this.state.description,
@@ -125,6 +121,11 @@ const CREATE_BOARD_MUTATION = gql`
   }
 `;
 
-export default compose(withStyles(styles), graphql(CREATE_BOARD_MUTATION))(
-  BoardCreateButton
-);
+const withCreateBoard = graphql(CREATE_BOARD_MUTATION, {
+  name: 'createBoard',
+  options: {
+    refetchQueries: ['AllBoardsQuery'],
+  },
+});
+
+export default compose(withStyles(styles), withCreateBoard)(BoardCreateButton);

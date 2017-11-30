@@ -4,24 +4,26 @@
   "private": true,
   "dependencies": {
     "apollo-client-preset": "^1.0.2",
-    "flow-bin": "^0.57.3",
+    "flow-bin": "^0.59.0",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
-    "material-ui": "next",
+    "material-ui": "1.0.0-beta.21",
     "material-ui-icons": "^1.0.0-beta.17",
-    "react": "^16.0.0",
-    "react-apollo": "2.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.1.1",
+    "react-apollo": "^2.0.1",
+    "react-dom": "^16.1.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
-    "react-scripts": "^1.0.14"
+    "react-scripts": "^1.0.17",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   }
 }

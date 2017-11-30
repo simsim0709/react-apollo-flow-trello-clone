@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import { graphql } from 'react-apollo';
@@ -10,7 +12,23 @@ import Item from 'components/Item';
 import BoardCard from 'components/BoardCard';
 import BoardCreateButton from 'components/BoardCreateButton';
 
-const MainPage = ({ boardsData }) => {
+import type { OperationComponent } from 'react-apollo';
+
+type Board = {|
+  id: string,
+  name: string,
+  description?: string,
+|};
+
+type Response = {
+  allBoards: Board[],
+};
+
+type Props = {
+  boardsData: ?(Board[]),
+};
+
+const MainPage = ({ boardsData }: Props) => {
   return (
     <Page>
       <Container>
@@ -29,6 +47,10 @@ const MainPage = ({ boardsData }) => {
   );
 };
 
+MainPage.defaultProps = {
+  boardsData: [],
+};
+
 const ALL_BOARDS_QUERY = gql`
   query AllBoardsQuery {
     allBoards {
@@ -39,10 +61,15 @@ const ALL_BOARDS_QUERY = gql`
   }
 `;
 
-export default graphql(ALL_BOARDS_QUERY, {
-  props: ({ ownProps, data }) => {
-    return {
-      boardsData: data.allBoards,
-    };
-  },
-})(MainPage);
+const withAllBoards: OperationComponent<Response, {}, Props> = graphql(
+  ALL_BOARDS_QUERY,
+  {
+    props: ({ ownProps, data }) => {
+      return {
+        boardsData: data.allBoards,
+      };
+    },
+  }
+);
+
+export default withAllBoards(MainPage);
