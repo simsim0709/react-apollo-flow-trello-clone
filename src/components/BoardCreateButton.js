@@ -32,7 +32,7 @@ const styles = theme => ({
   },
 });
 
-class BoardDialogButton extends React.Component {
+class BoardCreateButton extends React.Component {
   state = {
     open: false,
     name: '',
@@ -126,5 +126,5 @@ const CREATE_BOARD_MUTATION = gql`
 `;
 
 export default compose(withStyles(styles), graphql(CREATE_BOARD_MUTATION))(
-  BoardDialogButton
+  BoardCreateButton
 );

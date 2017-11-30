@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import MUICard, { CardActions, CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
@@ -26,7 +26,7 @@ const styles = theme => ({
   },
 });
 
-class CardListItem extends React.Component {
+class Card extends React.Component {
   state = {
     open: false,
   };
@@ -35,7 +35,7 @@ class CardListItem extends React.Component {
     const { classes } = this.props;
 
     return [
-      <Card
+      <MUICard
         className={classes.card}
         onClick={() => this.setState({ open: true })}
       >
@@ -48,7 +48,7 @@ class CardListItem extends React.Component {
         <CardActions className={classes.cardActions}>
           <Avatar>A</Avatar>
         </CardActions>
-      </Card>,
+      </MUICard>,
       <CardDialog
         open={this.state.open}
         onClose={() => this.setState({ open: false })}
@@ -57,4 +57,4 @@ class CardListItem extends React.Component {
   }
 }
 
-export default withStyles(styles)(CardListItem);
+export default withStyles(styles)(Card);

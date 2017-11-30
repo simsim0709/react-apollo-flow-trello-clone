@@ -10,7 +10,7 @@ import Page from 'components/Page';
 import Container from 'components/Container';
 import Item from 'components/Item';
 
-import CardList from 'components/CardList';
+import List from 'components/List';
 import ListCreateButton from 'components/ListCreateButton';
 
 const styles = theme => ({
@@ -19,6 +19,7 @@ const styles = theme => ({
     height: '100vh',
     padding: '0 16px',
     overflowX: 'scroll',
+    boxSizing: 'border-box',
   },
   container: {
     flexWrap: 'nowrap',
@@ -36,7 +37,7 @@ const BoardPage = ({ classes, match, lists }) => {
         {lists &&
           lists.map(list => (
             <Item>
-              <CardList listData={list} />
+              <List listData={list} />
             </Item>
           ))}
         <Item>

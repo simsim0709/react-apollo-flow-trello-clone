@@ -10,6 +10,9 @@ import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const styles = theme => ({
+  wrapper: {
+    paddingRight: theme.spacing.unit,
+  },
   form: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -75,7 +78,7 @@ class ListCreateButton extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.wrapper}>
         <Button
           raised
           color="primary"

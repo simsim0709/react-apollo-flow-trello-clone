@@ -19,7 +19,7 @@ const styles = theme => ({
   },
 });
 
-const BoardItem = ({ classes, boardId, name, description }) => {
+const BoardCard = ({ classes, boardId, name, description }) => {
   return (
     <Card className={classes.card}>
       <Link to={`/board/${boardId}`}>
@@ -36,4 +36,4 @@ const BoardItem = ({ classes, boardId, name, description }) => {
   );
 };
 
-export default withStyles(styles)(BoardItem);
+export default withStyles(styles)(BoardCard);
