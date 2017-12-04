@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 
 import { withStyles } from 'material-ui/styles';
@@ -18,7 +16,10 @@ const styles = theme => {
 };
 
 const List = ({ classes, listData }) => {
-  const { id, name } = listData;
+  const {
+    // id,
+    name,
+  } = listData;
   console.log('listData', listData);
   return (
     <MUICard className={classes.root}>

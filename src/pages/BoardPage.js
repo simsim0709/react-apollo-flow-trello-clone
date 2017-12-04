@@ -1,6 +1,9 @@
+// @flow
+
 import React from 'react';
 
 import { graphql, compose } from 'react-apollo';
+import type { OperationComponent } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { withStyles } from 'material-ui/styles';
@@ -12,6 +15,23 @@ import Item from 'components/Item';
 
 import List from 'components/List';
 import ListCreateButton from 'components/ListCreateButton';
+
+type ListData = Object;
+
+type Response = {
+  allLists: ListData[],
+};
+
+type InputProps = {
+  boardId: string,
+};
+
+type ReturnProps = {
+  lists: ?(ListData[]),
+  boardId?: ?string,
+};
+
+type Props = { classes: Object } & ReturnProps;
 
 const styles = theme => ({
   page: {
@@ -26,22 +46,18 @@ const styles = theme => ({
   },
 });
 
-const BoardPage = ({ classes, match, lists }) => {
-  const { params } = match;
-
-  console.log('lists', lists);
-
+const BoardPage = ({ classes, boardId, lists }: Props) => {
   return (
     <Page className={classes.page}>
       <Container className={classes.container}>
         {lists &&
-          lists.map(list => (
+          lists.map((list: ListData) => (
             <Item>
               <List listData={list} />
             </Item>
           ))}
         <Item>
-          <ListCreateButton boardId={params && params.boardId} />
+          <ListCreateButton boardId={boardId} />
         </Item>
       </Container>
     </Page>
@@ -57,23 +73,28 @@ const ALL_LISTS_BY_BOARD_ID_QUERY = gql`
   }
 `;
 
-export default compose(
-  withStyles(styles),
-  graphql(ALL_LISTS_BY_BOARD_ID_QUERY, {
-    skip: ({ match }) => match && match.params && !match.params.boardId,
-    options: ({ match }) => {
-      return {
-        variables: {
-          boardId: match.params.boardId,
-        },
-      };
-    },
-    props: ({ data }) => {
-      const { allLists } = data;
+const withAllLists: OperationComponent<
+  Response,
+  InputProps,
+  ReturnProps
+> = graphql(ALL_LISTS_BY_BOARD_ID_QUERY, {
+  skip: ({ match }) => match && match.params && !match.params.boardId,
+  options: ({ match }) => {
+    return {
+      variables: {
+        boardId: match.params.boardId,
+      },
+    };
+  },
+  props: ({ data, ownProps }) => {
+    const { allLists } = data;
+    const { match } = ownProps;
 
-      return {
-        lists: allLists,
-      };
-    },
-  })
-)(BoardPage);
+    return {
+      lists: allLists,
+      boardId: match && match.params && match.params.boardId,
+    };
+  },
+});
+
+export default compose(withStyles(styles), withAllLists)(BoardPage);
