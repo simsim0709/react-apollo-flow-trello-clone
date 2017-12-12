@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
-    marginBottom: 30,
+    marginBottom: theme.spacing.unit * 3,
   },
   flex: {
     flex: 1,
@@ -25,23 +25,21 @@ const styles = theme => ({
 const Header = props => {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            color="contrast"
-            aria-label="Menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography type="title" color="inherit" className={classes.flex}>
-            <NavLink to="/">Trello</NavLink>
-          </Typography>
-          <Button color="contrast">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar className={classes.root} position="static">
+      <Toolbar>
+        <IconButton
+          className={classes.menuButton}
+          color="contrast"
+          aria-label="Menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography type="title" color="inherit" className={classes.flex}>
+          <NavLink to="/">Trello</NavLink>
+        </Typography>
+        <Button color="contrast">Login</Button>
+      </Toolbar>
+    </AppBar>
   );
 };
 

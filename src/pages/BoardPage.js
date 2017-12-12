@@ -34,21 +34,23 @@ type ReturnProps = {
 type Props = { classes: Object } & ReturnProps;
 
 const styles = theme => ({
-  page: {
-    width: '100%',
-    height: '100vh',
-    padding: '0 16px',
-    overflowX: 'scroll',
-    boxSizing: 'border-box',
+  '@global': {
+    main: {
+      overflow: 'hidden',
+    },
+  },
+  root: {
+    overflowX: 'auto',
   },
   container: {
     flexWrap: 'nowrap',
+    height: 'calc(100vh - 88px)',
   },
 });
 
 const BoardPage = ({ classes, boardId, lists }: Props) => {
   return (
-    <Page className={classes.page}>
+    <Page className={classes.root}>
       <Container className={classes.container}>
         {lists &&
           lists.map((list: ListData) => (
@@ -69,6 +71,11 @@ const ALL_LISTS_BY_BOARD_ID_QUERY = gql`
     allLists(filter: { board: { id: $boardId } }) {
       id
       name
+      cards {
+        id
+        createdAt
+        name
+      }
     }
   }
 `;

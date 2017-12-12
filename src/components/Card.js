@@ -6,6 +6,8 @@ import MUICard, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 
+import TimeAgo from 'react-timeago';
+
 import CardDialog from './CardDialog';
 
 type Props = {
@@ -39,7 +41,7 @@ class Card extends React.Component<Props, State> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { name, createdAt, classes } = this.props;
 
     return [
       <MUICard
@@ -47,9 +49,9 @@ class Card extends React.Component<Props, State> {
         onClick={() => this.setState({ open: true })}
       >
         <CardContent className={classes.cardContent}>
-          <Typography type="headline">title</Typography>
+          <Typography type="title">{name}</Typography>
           <Typography type="body1" className={classes.pos}>
-            createdAt
+            <TimeAgo date={createdAt} />
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
