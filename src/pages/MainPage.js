@@ -9,8 +9,8 @@ import Page from 'components/Page';
 import Container from 'components/Container';
 import Item from 'components/Item';
 
-import BoardItem from 'components/BoardItem';
-import BoardDialogButton from 'components/BoardDialogButton';
+import BoardCard from 'components/BoardCard';
+import BoardCreateButton from 'components/BoardCreateButton';
 
 import type { OperationComponent } from 'react-apollo';
 
@@ -35,12 +35,12 @@ const MainPage = ({ boardsData }: Props) => {
         {boardsData &&
           boardsData.map(({ id, name, description }) => (
             <Item key={id}>
-              <BoardItem name={name} description={description} />
+              <BoardCard boardId={id} name={name} description={description} />
             </Item>
           ))}
 
         <Item>
-          <BoardDialogButton />
+          <BoardCreateButton />
         </Item>
       </Container>
     </Page>

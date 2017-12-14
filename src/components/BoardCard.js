@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 type Props = {
   classes: Object,
+  boardId: string,
   name: string,
   description?: string,
 };
@@ -24,10 +25,10 @@ const styles = theme => ({
   },
 });
 
-const BoardItem = ({ classes, name, description }: Props) => {
+const BoardCard = ({ classes, boardId, name, description }: Props) => {
   return (
     <Card className={classes.card}>
-      <Link to="/board/1">
+      <Link to={`/board/${boardId}`}>
         <CardContent>
           <Typography type="headline" component="h2">
             {name}
@@ -41,4 +42,4 @@ const BoardItem = ({ classes, name, description }: Props) => {
   );
 };
 
-export default withStyles(styles)(BoardItem);
+export default withStyles(styles)(BoardCard);

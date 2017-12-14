@@ -12,5 +12,23 @@ type Board @model {
   updatedAt: DateTime!
   name: String!
   description: String
+  lists: [List!]! @relation(name: "ListOnBoard")
   # owner: User! @relation(name: "UserBoards")
+}
+
+type List @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  board: Board! @relation(name: "ListOnBoard")
+  cards: [Card!]! @relation(name: "CardOnList")
+}
+
+type Card @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String
+  list: List! @relation(name: "CardOnList")
 }

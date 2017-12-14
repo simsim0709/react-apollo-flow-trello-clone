@@ -2,9 +2,11 @@
 
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import MUICard, { CardActions, CardContent } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
+
+import TimeAgo from 'react-timeago';
 
 import CardDialog from './CardDialog';
 
@@ -33,29 +35,29 @@ const styles = theme => ({
   },
 });
 
-class CardListItem extends React.Component<Props, State> {
+class Card extends React.Component<Props, State> {
   state = {
     open: false,
   };
 
   render() {
-    const { classes } = this.props;
+    const { name, createdAt, classes } = this.props;
 
     return [
-      <Card
+      <MUICard
         className={classes.card}
         onClick={() => this.setState({ open: true })}
       >
         <CardContent className={classes.cardContent}>
-          <Typography type="headline">title</Typography>
+          <Typography type="title">{name}</Typography>
           <Typography type="body1" className={classes.pos}>
-            createdAt
+            <TimeAgo date={createdAt} />
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Avatar>A</Avatar>
         </CardActions>
-      </Card>,
+      </MUICard>,
       <CardDialog
         open={this.state.open}
         onClose={() => this.setState({ open: false })}
@@ -64,4 +66,4 @@ class CardListItem extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(styles)(CardListItem);
+export default withStyles(styles)(Card);

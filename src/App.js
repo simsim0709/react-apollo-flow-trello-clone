@@ -3,6 +3,8 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import { withStyles } from 'material-ui';
+
 import Header from 'components/Header';
 
 import MainPage from 'pages/MainPage';
@@ -12,11 +14,18 @@ import apolloClient from './apolloClient';
 
 import './App.css';
 
-const App = () => {
+const styles = {
+  root: {
+    width: '100%',
+    height: '100%',
+  },
+};
+
+const App = ({ classes }) => {
   return (
     <ApolloProvider client={apolloClient}>
       <BrowserRouter>
-        <main>
+        <main className={classes.root}>
           <Header />
           <Switch>
             <Route path="/" component={MainPage} exact />
@@ -28,4 +37,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withStyles(styles)(App);
