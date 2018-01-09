@@ -101,8 +101,6 @@ class List extends React.Component<Props, State> {
     const { classes, listData } = this.props;
     const { name, cards: cardsData = [] } = listData;
 
-    console.log('listData', listData);
-
     return (
       <MUICard className={classes.root}>
         <CardContent>
@@ -110,6 +108,7 @@ class List extends React.Component<Props, State> {
         </CardContent>
         <CardContent className={classes.cardListWrapper}>
           {cardsData.map((cardData = {}) => <Card {...cardData} />)}
+
           {this.state.open && (
             <MUICard className={classes.card}>
               <form onSubmit={this.handleSubmit}>
@@ -125,7 +124,7 @@ class List extends React.Component<Props, State> {
                     onChange={this.handleInputChange}
                   />
                 </CardContent>
-                <CardActions className={classes.cardActions}>
+                <CardActions>
                   <Button color="primary" raised onClick={this.handleSubmit}>
                     Add
                   </Button>
@@ -140,8 +139,7 @@ class List extends React.Component<Props, State> {
         <CardContent className={classes.cardCreateButtonWrapper}>
           <Button
             className={classes.cardCreateButton}
-            onClick={this.handleOpen}
-          >
+            onClick={this.handleOpen}>
             Add a card...
           </Button>
         </CardContent>

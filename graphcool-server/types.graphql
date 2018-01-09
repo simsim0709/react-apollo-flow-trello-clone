@@ -30,5 +30,6 @@ type Card @model {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String
+  content: String
   list: List! @relation(name: "CardOnList")
 }

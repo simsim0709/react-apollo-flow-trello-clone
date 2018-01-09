@@ -1,5 +1,6 @@
 {
   "name": "graphcool-server",
   "version": "1.0.0",
-  "description": "My Graphcool Service"
+  "description": "My Graphcool Service",
+  "dependencies": {}
 }

@@ -41,13 +41,12 @@ class Card extends React.Component<Props, State> {
   };
 
   render() {
-    const { name, createdAt, classes } = this.props;
+    const { id, name, createdAt, classes } = this.props;
 
     return [
       <MUICard
         className={classes.card}
-        onClick={() => this.setState({ open: true })}
-      >
+        onClick={() => this.setState({ open: true })}>
         <CardContent className={classes.cardContent}>
           <Typography type="title">{name}</Typography>
           <Typography type="body1" className={classes.pos}>
@@ -59,6 +58,7 @@ class Card extends React.Component<Props, State> {
         </CardActions>
       </MUICard>,
       <CardDialog
+        cardId={id}
         open={this.state.open}
         onClose={() => this.setState({ open: false })}
       />,
