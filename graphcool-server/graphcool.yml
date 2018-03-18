@@ -17,6 +17,27 @@
 # In the types.graphql you define your data schema
 types: ./types.graphql
 
+functions:
+
+# added by email-password template:
+  signup:
+    type: resolver
+    schema: src/email-password/signup.graphql
+    handler:
+      code: src/email-password/signup.js
+
+  authenticate:
+    type: resolver
+    schema: src/email-password/authenticate.graphql
+    handler:
+      code: src/email-password/authenticate.js
+
+  loggedInUser:
+    type: resolver
+    schema: src/email-password/loggedInUser.graphql
+    handler:
+      code: src/email-password/loggedInUser.js
+
 
 # Model/Relation permissions are used to limit the API access
 # To take the burden of thinking about those while development, we
