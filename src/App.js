@@ -3,7 +3,7 @@ import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { withStyles } from 'material-ui';
+import { withStyles } from 'material-ui/styles';
 
 import Header from 'components/Header';
 
