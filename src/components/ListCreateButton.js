@@ -80,26 +80,23 @@ class ListCreateButton extends Component {
     return (
       <div className={classes.wrapper}>
         <Button
-          raised
+          variant="raised"
           color="primary"
           style={{ width: '100%' }}
           onClick={this.handlePopover}
-          ref={button => (this.button = button)}
-        >
+          ref={button => (this.button = button)}>
           Add a list...
         </Button>
         <Popover
           open={this.state.open}
           anchorEl={this.anchorEl()}
-          onRequestClose={this.handlePopover}
-        >
+          onClose={this.handlePopover}>
           <form
             className={classes.form}
             style={{
               width: this.getButtonWidth() - 32, // 32 is margin left and right
             }}
-            onSubmit={this.handleSubmit}
-          >
+            onSubmit={this.handleSubmit}>
             <TextField
               label="Add a list ..."
               className={classes.formTextField}
@@ -108,11 +105,11 @@ class ListCreateButton extends Component {
               autoFocus
             />
             <Button
+              variant="raised"
               type="submit"
               raised
-              color="accent"
-              className={classes.formButton}
-            >
+              color="secondary"
+              className={classes.formButton}>
               Save
             </Button>
           </form>

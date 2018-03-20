@@ -179,7 +179,7 @@ class CardDialog extends React.Component {
         maxWidth="md"
         open={this.props.open}
         keepMounted
-        onRequestClose={this.handleRequestClose}>
+        onClose={this.handleRequestClose}>
         <DialogTitle onClick={this.handleNameClick}>
           {isEditingName ? (
             <TextField
@@ -210,7 +210,10 @@ class CardDialog extends React.Component {
                   onBlur={this.handleContentBlur}
                 />
                 <div className={classes.buttonWrapper}>
-                  <Button raised color="accent" onClick={this.handleSaveClick}>
+                  <Button
+                    variant="raised"
+                    color="secondary"
+                    onClick={this.handleSaveClick}>
                     SAVE
                   </Button>
                   <IconButton>

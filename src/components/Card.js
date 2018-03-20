@@ -48,8 +48,8 @@ class Card extends React.Component<Props, State> {
         className={classes.card}
         onClick={() => this.setState({ open: true })}>
         <CardContent className={classes.cardContent}>
-          <Typography type="title">{name}</Typography>
-          <Typography type="body1" className={classes.pos}>
+          <Typography variant="title">{name}</Typography>
+          <Typography variant="body1" className={classes.pos}>
             <TimeAgo date={createdAt} />
           </Typography>
         </CardContent>

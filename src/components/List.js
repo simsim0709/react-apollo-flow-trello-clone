@@ -104,7 +104,7 @@ class List extends React.Component<Props, State> {
     return (
       <MUICard className={classes.root}>
         <CardContent>
-          <Typography type="headline">{name}</Typography>
+          <Typography variant="headline">{name}</Typography>
         </CardContent>
         <CardContent className={classes.cardListWrapper}>
           {cardsData.map((cardData = {}) => <Card {...cardData} />)}
@@ -125,7 +125,10 @@ class List extends React.Component<Props, State> {
                   />
                 </CardContent>
                 <CardActions>
-                  <Button color="primary" raised onClick={this.handleSubmit}>
+                  <Button
+                    variant="raised"
+                    color="primary"
+                    onClick={this.handleSubmit}>
                     Add
                   </Button>
                   <IconButton>

@@ -34,10 +34,10 @@ const Header = props => {
           aria-label="Menu">
           <MenuIcon />
         </IconButton>
-        <Typography type="title" color="inherit" className={classes.flex}>
+        <Typography variant="title" color="inherit" className={classes.flex}>
           <NavLink to="/">Trello</NavLink>
         </Typography>
-        <LoginButton color="contrast" />
+        <LoginButton variant="raised" color="secondary" />
       </Toolbar>
     </AppBar>
   );

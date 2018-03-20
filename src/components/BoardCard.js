@@ -30,10 +30,10 @@ const BoardCard = ({ classes, boardId, name, description }: Props) => {
     <Card className={classes.card}>
       <Link to={`/board/${boardId}`}>
         <CardContent>
-          <Typography type="headline" component="h2">
+          <Typography variant="headline" component="h2">
             {name}
           </Typography>
-          <Typography type="body1" className={classes.body1}>
+          <Typography variant="body1" className={classes.body1}>
             {description}
           </Typography>
         </CardContent>

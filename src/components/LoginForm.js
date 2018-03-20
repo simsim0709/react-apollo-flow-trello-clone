@@ -40,7 +40,7 @@ class CreateLogin extends React.Component {
           onChange={e => this.setState({ password: e.target.value })}
         />
 
-        <Button onClick={this.authenticateUser}>Log in</Button>
+        <Button onClick={this.authenticateUser}>Login</Button>
       </form>
     );
   }

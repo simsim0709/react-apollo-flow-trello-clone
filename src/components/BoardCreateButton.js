@@ -15,18 +15,21 @@ import Typography from 'material-ui/Typography';
 import { compose, graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const styles = theme => ({
-  card: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minWidth: 160,
-    height: 100,
-    background: theme.palette.primary[500],
-    color: theme.palette.common.white,
-    cursor: 'pointer',
-  },
-});
+const styles = theme => {
+  console.log('theme', theme);
+  return {
+    card: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minWidth: 160,
+      height: 100,
+      background: theme.palette.primary.main,
+      color: theme.palette.common.white,
+      cursor: 'pointer',
+    },
+  };
+};
 
 class BoardCreateButton extends React.Component {
   state = {
@@ -68,12 +71,12 @@ class BoardCreateButton extends React.Component {
     return [
       <Card onClick={this.handleDialog} className={classes.card}>
         <CardContent>
-          <Typography type="subheading" color="inherit">
+          <Typography variant="subheading" color="inherit">
             Create new board...
           </Typography>
         </CardContent>
       </Card>,
-      <Dialog open={this.state.open} onRequestClose={this.handleDialog}>
+      <Dialog open={this.state.open} onClose={this.handleDialog}>
         <DialogTitle>New Board</DialogTitle>
         <DialogContent>
           <DialogContentText>
